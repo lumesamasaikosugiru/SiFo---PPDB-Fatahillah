@@ -11,6 +11,7 @@ use App\Filament\Resources\TahunAkademiks\Schemas\TahunAkademikInfolist;
 use App\Filament\Resources\TahunAkademiks\Tables\TahunAkademiksTable;
 use App\Models\TahunAkademik;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,7 +24,9 @@ class TahunAkademikResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'tahun';
-
+    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationLabel = 'Tahun Akademik';
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
     public static function form(Schema $schema): Schema
     {
         return TahunAkademikForm::configure($schema);

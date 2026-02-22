@@ -11,6 +11,7 @@ use App\Filament\Resources\Jurusans\Schemas\JurusanInfolist;
 use App\Filament\Resources\Jurusans\Tables\JurusansTable;
 use App\Models\Jurusan;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,10 @@ class JurusanResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'nama_jurusan';
+
+    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationLabel = 'Jurusan';
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
 
     public static function form(Schema $schema): Schema
     {

@@ -11,6 +11,7 @@ use App\Filament\Resources\Pembayarans\Schemas\PembayaranInfolist;
 use App\Filament\Resources\Pembayarans\Tables\PembayaransTable;
 use App\Models\Pembayaran;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,9 @@ class PembayaranResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'Pembayaran';
+    protected static ?int $navigationSort = 7;
+    protected static ?string $navigationLabel = 'Pembayaran';
+    protected static string|UnitEnum|null $navigationGroup = 'Payments';
 
     public static function form(Schema $schema): Schema
     {

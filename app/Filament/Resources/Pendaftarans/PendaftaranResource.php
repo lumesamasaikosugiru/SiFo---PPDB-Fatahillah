@@ -11,6 +11,7 @@ use App\Filament\Resources\Pendaftarans\Schemas\PendaftaranInfolist;
 use App\Filament\Resources\Pendaftarans\Tables\PendaftaransTable;
 use App\Models\Pendaftaran;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,10 @@ class PendaftaranResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'kode_regis';
+
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'Pendaftaran';
+    protected static string|UnitEnum|null $navigationGroup = 'Registrations';
 
     public static function form(Schema $schema): Schema
     {

@@ -11,6 +11,7 @@ use App\Filament\Resources\Siswas\Schemas\SiswaInfolist;
 use App\Filament\Resources\Siswas\Tables\SiswasTable;
 use App\Models\Siswa;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,9 @@ class SiswaResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'nama_siswa';
+    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationLabel = 'Murid';
+    protected static string|UnitEnum|null $navigationGroup = 'Registrations';
 
     public static function form(Schema $schema): Schema
     {

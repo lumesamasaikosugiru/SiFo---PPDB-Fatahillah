@@ -13,7 +13,7 @@ return new class extends Migration {
     {
         Schema::create('tahun_akademiks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('tahun');
+            $table->string('tahun');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

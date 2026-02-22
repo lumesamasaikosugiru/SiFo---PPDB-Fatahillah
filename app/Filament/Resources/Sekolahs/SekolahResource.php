@@ -11,6 +11,7 @@ use App\Filament\Resources\Sekolahs\Schemas\SekolahInfolist;
 use App\Filament\Resources\Sekolahs\Tables\SekolahsTable;
 use App\Models\Sekolah;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,9 @@ class SekolahResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'nama_sekolah';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel = 'Sekolah';
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
 
     public static function form(Schema $schema): Schema
     {
