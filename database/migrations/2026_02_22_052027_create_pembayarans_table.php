@@ -15,9 +15,8 @@ return new class extends Migration {
             $table->foreignId('metode_pembayaran_id')->nullable()->constrained('metode_pembayarans')->nullOnDelete();
             $table->foreignId('pendaftaran_id')->nullable()->constrained('pendaftarans')->nullOnDelete();
             $table->unsignedBigInteger('nominal');
-            $table->string('order_id')->nullable();
+            $table->string('order_id')->nullable()->unique();
             $table->string('snap_token')->nullable();
-            $table->unique(['order_id', 'snap_token']);
             $table->enum('status_pembayaran', [
                 'pending',
                 'menunggu_verifikasi',
@@ -25,7 +24,10 @@ return new class extends Migration {
                 'gagal',
                 'kadaluarsa',
             ])->default('pending');
-            $table->date('tanggal_pembayaran');
+            $table->date('tanggal_pembayaran')->nullable();
+            $table->string('proof_path')->nullable();
+            $table->foreignId('verifikasi_oleh')->nullable()->constrained('users');
+            $table->timestamp('verifikasi_tanggal')->nullable();
             $table->timestamps();
         });
     }

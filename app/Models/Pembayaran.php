@@ -27,4 +27,9 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'verifikasi_oleh');
+    }
 }

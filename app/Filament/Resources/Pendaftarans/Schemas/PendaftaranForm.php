@@ -16,31 +16,31 @@ class PendaftaranForm
                 TextInput::make('kode_regis')
                     ->required(),
                 Select::make('tahun_akademik_id')
-                    ->relationship('tahunAkademik', 'id')
+                    ->relationship('tahunAkademik', 'tahun')
                     ->default(null),
                 Select::make('sekolah_id')
-                    ->relationship('sekolah', 'id')
+                    ->relationship('sekolah', 'nama_sekolah')
                     ->default(null),
                 Select::make('jurusan_id')
-                    ->relationship('jurusan', 'id')
+                    ->relationship('jurusan', 'nama_jurusan')
                     ->default(null),
                 Select::make('jalur_pendaftaran')
                     ->options([
-            'reguler' => 'Reguler',
-            'prestasi' => 'Prestasi',
-            'afirmasi' => 'Afirmasi',
-            'pindahan' => 'Pindahan',
-        ])
+                        'reguler' => 'Reguler',
+                        'prestasi' => 'Prestasi',
+                        'afirmasi' => 'Afirmasi',
+                        'pindahan' => 'Pindahan',
+                    ])
                     ->required(),
                 Select::make('status')
                     ->options([
-            'diproses' => 'Diproses',
-            'diverifikasi' => 'Diverifikasi',
-            'diterima' => 'Diterima',
-            'ditolak' => 'Ditolak',
-            'menunggu_pembayaran' => 'Menunggu pembayaran',
-            'pembayaran_lunas' => 'Pembayaran lunas',
-        ])
+                        'diproses' => 'Diproses',
+                        'diverifikasi' => 'Diverifikasi',
+                        'diterima' => 'Diterima',
+                        'ditolak' => 'Ditolak',
+                        'menunggu_pembayaran' => 'Menunggu pembayaran',
+                        'pembayaran_lunas' => 'Pembayaran lunas',
+                    ])
                     ->default('diproses')
                     ->required(),
                 DatePicker::make('tanggal_submit')

@@ -25,6 +25,6 @@ class Siswa extends Model
 
     public function pendaftaran(): BelongsTo
     {
-        return $this->belongsTo(Pendaftaran::class, 'pendaftaran-id');
+        return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
     }
 }

@@ -50,6 +50,10 @@ class User extends Authenticatable
 
     public function adminSekolahs(): HasMany
     {
-        return $this->hasMany(adminSekolah::class, 'user_id');
+        return $this->hasMany(AdminSekolah::class, 'user_id');
+    }
+    public function pembayarans(): HasMany
+    {
+        return $this->hasMany(Pembayaran::class, 'verifikasi_oleh');
     }
 }
