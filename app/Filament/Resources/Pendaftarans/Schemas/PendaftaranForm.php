@@ -2,9 +2,12 @@
 
 namespace App\Filament\Resources\Pendaftarans\Schemas;
 
+use App\Models\Jurusan;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 
 class PendaftaranForm
@@ -18,12 +21,30 @@ class PendaftaranForm
                 Select::make('tahun_akademik_id')
                     ->relationship('tahunAkademik', 'tahun')
                     ->default(null),
+
                 Select::make('sekolah_id')
                     ->relationship('sekolah', 'nama_sekolah')
-                    ->default(null),
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('jurusan_id', '');
+                    })
+                    ->required(),
+
                 Select::make('jurusan_id')
                     ->relationship('jurusan', 'nama_jurusan')
-                    ->default(null),
+                    ->options(function (Get $get) {
+                        $sekolahId = $get('sekolah_id');
+
+                        if (!$sekolahId) {
+                            return [];
+                        }
+                        return Jurusan::query()
+                            ->where('sekolah_id', $sekolahId)
+                            ->pluck('nama_jurusan', 'id');
+                    })
+                    ->preload()
+                    ->searchable()
+                    ->required(),
+
                 Select::make('jalur_pendaftaran')
                     ->options([
                         'reguler' => 'Reguler',
