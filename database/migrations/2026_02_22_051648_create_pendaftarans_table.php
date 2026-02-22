@@ -31,7 +31,7 @@ return new class extends Migration {
                 'pembayaran_lunas',
             ])->default('diproses');
             $table->date('tanggal_submit');
-            $table->enum('dibuat_oleh', ['publik', 'admin'])->default('public');
+            $table->enum('dibuat_oleh', ['publik', 'admin'])->default('publik');
             $table->timestamps();
         });
     }

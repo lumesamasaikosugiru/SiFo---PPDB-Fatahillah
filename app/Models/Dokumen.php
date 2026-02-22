@@ -10,7 +10,6 @@ class Dokumen extends Model
     protected $fillable =
         [
             'pendaftaran_id',
-            'siswa_id',
             'tipe_dokumen',
             'file_path',
         ];
