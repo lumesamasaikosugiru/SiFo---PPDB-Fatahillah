@@ -8,8 +8,7 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('admin_sekolahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
@@ -17,7 +16,6 @@ return new class extends Migration {
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
