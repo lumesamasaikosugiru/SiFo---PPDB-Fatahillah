@@ -118,6 +118,7 @@
           <li><a href="{{ url('/#sekolah') }}" class="nav-link text-gray-700 font-medium hover:text-primary-500 transition-colors text-sm">Sekolah</a></li>
           <li><a href="{{ url('/#alur') }}" class="nav-link text-gray-700 font-medium hover:text-primary-500 transition-colors text-sm">Alur Daftar</a></li>
           <li><a href="{{ route('daftar.create') }}" class="nav-link text-gray-700 font-medium hover:text-primary-500 transition-colors text-sm">Pendaftaran</a></li>
+          <li><a href="{{ route('pembayaran.index') }}" class="nav-link text-gray-700 font-medium hover:text-primary-500 transition-colors text-sm">Pembayaran</a></li>
           <!-- <li><a href="{{ route('status.index') }}" class="nav-link text-gray-700 font-medium hover:text-primary-500 transition-colors text-sm">Cek Status</a></li> -->
         </ul>
 
@@ -149,6 +150,7 @@
           <li><a href="{{ url('/#sekolah') }}" class="block py-2 text-gray-700 font-medium hover:text-primary-500 transition-colors">Sekolah</a></li>
           <li><a href="{{ url('/#alur') }}" class="block py-2 text-gray-700 font-medium hover:text-primary-500 transition-colors">Alur Daftar</a></li>
           <li><a href="{{ route('daftar.create') }}" class="block py-2 text-gray-700 font-medium hover:text-primary-500 transition-colors">Pendaftaran</a></li>
+          <li><a href="{{ route('pembayaran.index') }}" class="block py-2 text-gray-700 font-medium hover:text-primary-500 transition-colors">Pembayaran</a></li>
           <li><a href="{{ route('status.index') }}" class="block py-2 text-gray-700 font-medium hover:text-primary-500 transition-colors">Cek Status</a></li>
           <li class="pt-2 border-t border-gray-100">
             <a href="{{ route('daftar.create') }}" class="block text-center bg-gradient-to-r from-primary-400 to-primary-600 text-white font-semibold py-2.5 rounded-xl">
@@ -174,7 +176,7 @@
         <div class="md:col-span-2">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 rounded-xl overflow-hidden">
-              <img src="{{ asset('assets/images/logo-yayasan.jpeg') }}" alt="Logo Yayasan" class="w-full h-full object-contain"
+              <img src="{{ asset('assets/images/logo-Yayasan Fatahillah.jpeg') }}" alt="Logo Yayasan" class="w-full h-full object-contain"
                    onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-600 flex items-center justify-center\'><svg xmlns=\'http://www.w3.org/2000/svg\' class=\'h-6 w-6 text-white\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'currentColor\' stroke-width=\'2\'><path d=\'M12 14l9-5-9-5-9 5 9 5z\'/></svg></div>'">
             </div>
             <div>
@@ -203,6 +205,7 @@
             <li><a href="{{ url('/#sekolah') }}" class="hover:text-primary-400 transition-colors">Pilih Sekolah</a></li>
             <li><a href="{{ url('/#alur') }}" class="hover:text-primary-400 transition-colors">Alur Pendaftaran</a></li>
             <li><a href="{{ route('daftar.create') }}" class="hover:text-primary-400 transition-colors">Pendaftaran</a></li>
+            <li><a href="{{ route('pembayaran.index') }}" class="hover:text-primary-400 transition-colors">Pembayaran</a></li>
             <li><a href="{{ route('status.index') }}" class="hover:text-primary-400 transition-colors">Cek Status</a></li>
           </ul>
         </div>

@@ -223,9 +223,10 @@ class PendaftaranController extends Controller
             )));
 
             try {
+                set_time_limit(60);
                 $this->kirimEmailPendaftaran($pendaftaran, $siswa, $emailTargets);
-            } catch (\Exception $e) {
-                Log::warning('Email gagal: ' . $e->getMessage());
+            } catch (\Throwable $e) {
+                Log::warning('Email pendaftaran gagal (timeout/error): ' . $e->getMessage());
             }
 
             // ===== REDIRECT KE HALAMAN FINISH =====
@@ -310,8 +311,9 @@ class PendaftaranController extends Controller
             .lbl{color:#666;width:140px;flex-shrink:0}
             .val{font-weight:600;color:#111}
             .steps{margin:16px 0}
-            .step{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
-            .snum{background:#3d9080;color:#fff;border-radius:50%;width:24px;height:24px;display:flex !important;align-items:center !important;justify-content:center !important;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;text-align:center !important;}
+            .step{display:table;width:100%;margin-bottom:12px}
+            .snum{display:table-cell;background:#3d9080;color:#fff;border-radius:50%;width:26px;min-width:26px;font-size:12px;font-weight:700;text-align:center;vertical-align:middle;padding:4px 6px;}
+            .stxt{display:table-cell;vertical-align:top;padding-left:12px;padding-top:3px;}
             .btn{display:block;width:fit-content;margin:20px auto;background:#3d9080;color:#fff;text-decoration:none;padding:13px 30px;border-radius:8px;font-weight:700;font-size:14px}
             .ftr{background:#f9fafb;border-top:1px solid #eee;padding:18px 30px;text-align:center;color:#999;font-size:12px}
         </style></head>
@@ -338,10 +340,10 @@ class PendaftaranController extends Controller
                 </div>
                 <h3 style='font-size:14px;color:#111;margin-bottom:10px'>Langkah Selanjutnya:</h3>
                 <div class='steps'>
-                    <div class='step'><div class='snum'>1</div><div><strong>Tunggu Verifikasi</strong><br><small style='color:#666'>Panitia akan memverifikasi data dan dokumen Anda dalam beberapa hari kerja.</small></div></div>
-                    <div class='step'><div class='snum'>2</div><div><strong>Pantau Status</strong><br><small style='color:#666'>Gunakan nomor pendaftaran di atas untuk cek status secara berkala.</small></div></div>
-                    <div class='step'><div class='snum'>3</div><div><strong>Pengumuman</strong><br><small style='color:#666'>Hasil seleksi diumumkan sesuai jadwal PPDB 2026/2027.</small></div></div>
-                    <div class='step'><div class='snum'>4</div><div><strong>Daftar Ulang / Pembayaran</strong><br><small style='color:#666'>Jika diterima, segera daftar ulang dalam waktu yang ditentukan.</small></div></div>
+                    <div class='step'><div class='snum'>1</div><div class='stxt'><strong>Tunggu Verifikasi</strong><br><small style='color:#666'>Panitia akan memverifikasi data dan dokumen Anda dalam beberapa hari kerja.</small></div></div>
+                    <div class='step'><div class='snum'>2</div><div class='stxt'><strong>Pantau Status</strong><br><small style='color:#666'>Gunakan nomor pendaftaran di atas untuk cek status secara berkala.</small></div></div>
+                    <div class='step'><div class='snum'>3</div><div class='stxt'><strong>Pengumuman</strong><br><small style='color:#666'>Hasil seleksi diumumkan sesuai jadwal PPDB 2026/2027.</small></div></div>
+                    <div class='step'><div class='snum'>4</div><div class='stxt'><strong>Pembayaran</strong><br><small style='color:#666'>Jika diterima, segera lakukan pembayaran uang pendaftaran melalui link yang tersedia.</small></div></div>
                 </div>
                 <a href='{$statusUrl}' class='btn' style='color:white !important;'>🔍 Cek Status Pendaftaran</a>
                 <p style='color:#aaa;font-size:11px;text-align:center;margin-top:16px'>Jika Anda tidak merasa mendaftar, abaikan email ini.<br>Hubungi kami: <a href='mailto:info@fatahillah.sch.id'>info@fatahillah.sch.id</a></p>

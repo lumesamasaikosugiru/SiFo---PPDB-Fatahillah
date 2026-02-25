@@ -250,7 +250,7 @@
             ['num' => '02', 'title' => 'Pilih Sekolah',     'desc' => 'Pilih sekolah dan jurusan yang sesuai dengan minat dan kemampuan Anda.', 'icon' => 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5', 'active' => true, 'emoji' => '🏫'],
             ['num' => '03', 'title' => 'Upload Dokumen',    'desc' => 'Upload dokumen persyaratan seperti ijazah, KK, akta kelahiran, dan pas foto.', 'icon' => 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12', 'active' => false, 'emoji' => '📁'],
             ['num' => '04', 'title' => 'Tunggu Verifikasi', 'desc' => 'Panitia PPDB akan memverifikasi data dan dokumen yang telah Anda submit.', 'icon' => 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4', 'active' => false, 'emoji' => '⏳'],
-            ['num' => '05', 'title' => 'Pengumuman & Daftar Ulang', 'desc' => 'Cek hasil seleksi dan lakukan daftar ulang jika dinyatakan diterima.', 'icon' => 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z', 'active' => false, 'emoji' => '🎉'],
+            ['num' => '05', 'title' => 'Pengumuman & Pembayaran', 'desc' => 'Cek hasil seleksi dan lakukan pembayaran uang pendaftaran jika dinyatakan diterima.', 'icon' => 'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z', 'active' => false, 'emoji' => '🎉'],
           ];
         @endphp
         @foreach($alurSteps as $step)

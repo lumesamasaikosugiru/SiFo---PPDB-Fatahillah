@@ -53,10 +53,14 @@
 <section class="max-w-3xl mx-auto px-6 mb-20">
   @php
     $statusConfig = [
-      'diproses'    => ['color'=>'bg-yellow-50 border-yellow-200 text-yellow-700','icon'=>'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-yellow-500','label'=>'Sedang Diproses','desc'=>'Pendaftaran Anda sedang dalam proses verifikasi oleh panitia PPDB.'],
-      'diverifikasi'=> ['color'=>'bg-blue-50 border-blue-200 text-blue-700','icon'=>'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4','iconColor'=>'text-blue-500','label'=>'Sedang Diverifikasi','desc'=>'Berkas Anda sedang diverifikasi oleh tim panitia PPDB.'],
-      'diterima'    => ['color'=>'bg-green-50 border-green-200 text-green-700','icon'=>'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-green-500','label'=>'Diterima','desc'=>'Selamat! Anda dinyatakan diterima. Segera lakukan daftar ulang.'],
-      'ditolak'     => ['color'=>'bg-red-50 border-red-200 text-red-700','icon'=>'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-red-500','label'=>'Tidak Diterima','desc'=>'Mohon maaf, Anda belum diterima pada periode PPDB ini.'],
+      'diproses'            => ['color'=>'bg-yellow-50 border-yellow-200 text-yellow-700','icon'=>'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-yellow-500','label'=>'Sedang Diproses','desc'=>'Pendaftaran Anda sedang dalam proses verifikasi oleh panitia PPDB.'],
+      'diverifikasi'        => ['color'=>'bg-blue-50 border-blue-200 text-blue-700','icon'=>'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4','iconColor'=>'text-blue-500','label'=>'Sedang Diverifikasi','desc'=>'Berkas Anda sedang diverifikasi oleh tim panitia PPDB.'],
+      'diterima'            => ['color'=>'bg-green-50 border-green-200 text-green-700','icon'=>'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-green-500','label'=>'Diterima','desc'=>'Selamat! Anda dinyatakan diterima. Segera lakukan pembayaran uang pendaftaran.'],
+      'ditolak'             => ['color'=>'bg-red-50 border-red-200 text-red-700','icon'=>'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-red-500','label'=>'Tidak Diterima','desc'=>'Mohon maaf, Anda belum diterima pada periode PPDB ini.'],
+      'menunggu_pembayaran' => ['color'=>'bg-orange-50 border-orange-200 text-orange-700','icon'=>'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z','iconColor'=>'text-orange-500','label'=>'Menunggu Pembayaran','desc'=>'Anda diterima! Segera selesaikan pembayaran uang pendaftaran.'],
+      'pembayaran_diproses' => ['color'=>'bg-purple-50 border-purple-200 text-purple-700','icon'=>'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z','iconColor'=>'text-purple-500','label'=>'Pembayaran Diproses','desc'=>'Bukti pembayaran Anda sudah diterima dan sedang diverifikasi admin. Harap tunggu konfirmasi.'],
+      'pembayaran_lunas'    => ['color'=>'bg-teal-50 border-teal-200 text-teal-700','icon'=>'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z','iconColor'=>'text-teal-500','label'=>'Pembayaran Lunas ✓','desc'=>'Pembayaran telah dikonfirmasi. Datang ke sekolah untuk konfirmasi dan melanjutkan proses pendaftaran.'],
+      'selesai'             => ['color'=>'bg-teal-50 border-teal-200 text-teal-700','icon'=>'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z','iconColor'=>'text-teal-500','label'=>'Selesai 🎉','desc'=>'Pendaftaran selesai. Selamat bergabung sebagai siswa baru!'],
     ];
     $cfg = $statusConfig[$pendaftaran->status] ?? $statusConfig['diproses'];
   @endphp
@@ -215,12 +219,29 @@
 
       {{-- Action Buttons --}}
       <div class="mt-8 pt-6 border-t border-gray-100 flex flex-wrap gap-3">
-        @if($pendaftaran->status === 'diterima')
-        <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary-400 to-primary-600 text-white font-semibold px-6 py-3 rounded-2xl hover:shadow-lg hover:scale-105 transition-all text-sm">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Download Bukti Penerimaan
+
+        {{-- Tombol Bayar — muncul jika status diterima atau menunggu_pembayaran --}}
+        @if(in_array($pendaftaran->status, ['diterima', 'menunggu_pembayaran']))
+        <form method="POST" action="{{ route('pembayaran.cek') }}" class="inline">
+          @csrf
+          <input type="hidden" name="kode_registrasi" value="{{ $pendaftaran->kode_regis }}">
+          <button type="submit"
+             class="inline-flex items-center gap-2 bg-gradient-to-r from-primary-400 to-primary-600 text-white font-semibold px-6 py-3 rounded-2xl hover:shadow-lg hover:scale-105 transition-all text-sm">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+            💳 Bayar Uang Pendaftaran
+          </button>
+        </form>
+        @endif
+
+        {{-- Tombol Cek Status Pembayaran — muncul jika sudah ada proses pembayaran --}}
+        @if(in_array($pendaftaran->status, ['pembayaran_diproses', 'pembayaran_lunas', 'selesai']))
+        <a href="{{ route('pembayaran.status', ['kode' => $pendaftaran->kode_regis]) }}"
+           class="inline-flex items-center gap-2 bg-purple-600 text-white font-semibold px-6 py-3 rounded-2xl hover:shadow-lg hover:scale-105 transition-all text-sm">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          🔍 Cek Status Pembayaran
         </a>
         @endif
+
         <a href="{{ route('status.index') }}" class="inline-flex items-center gap-2 bg-gray-100 text-gray-700 font-semibold px-6 py-3 rounded-2xl hover:bg-gray-200 transition-all text-sm">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           Cek Ulang

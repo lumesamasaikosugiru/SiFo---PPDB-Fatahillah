@@ -26,6 +26,7 @@ class StatusController extends Controller
             'sekolah',
             'waliSiswas',
             'dokumens',
+            'pembayarans.metodePembayaran', // tambah relasi pembayaran
         ])->where('kode_regis', strtoupper(trim($request->kode_registrasi)))
           ->first();
 
