@@ -16,12 +16,14 @@ return new class extends Migration {
             $table->foreignId('tahun_akademik_id')->nullable()->constrained('tahun_akademiks')->nullOnDelete();
             $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->nullOnDelete();
             $table->foreignId('jurusan_id')->nullable()->constrained('jurusans')->nullOnDelete();
+
             $table->enum('jalur_pendaftaran', [
                 'reguler',
                 'prestasi',
                 'afirmasi',
                 'pindahan',
             ]);
+
             $table->enum('status', [
                 'diproses',
                 'diverifikasi',
@@ -30,6 +32,7 @@ return new class extends Migration {
                 'menunggu_pembayaran',
                 'pembayaran_lunas',
             ])->default('diproses');
+
             $table->date('tanggal_submit');
             $table->enum('dibuat_oleh', ['publik', 'admin'])->default('publik');
             $table->timestamps();
