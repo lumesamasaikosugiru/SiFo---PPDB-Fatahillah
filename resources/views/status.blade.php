@@ -36,7 +36,7 @@
           <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
             <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
           </div>
-          <input type="text" name="kode_registrasi" id="input-kode" placeholder="Contoh: PPDB260001"
+          <input type="text" name="kode_registrasi" id="input-kode" placeholder="Contoh: PPDB26-AB3XY7KZ"
                  value="{{ old('kode_registrasi', isset($pendaftaran) ? $pendaftaran->kode_regis : '') }}"
                  style="text-transform:uppercase"
                  oninput="this.value=this.value.toUpperCase()"
@@ -269,11 +269,11 @@
       <div class="space-y-2">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-primary-400 rounded-full"></span>
-          <code class="text-xs text-primary-600 font-mono bg-primary-50 px-2 py-1 rounded-lg">PPDB260001</code>
+          <code class="text-xs text-primary-600 font-mono bg-primary-50 px-2 py-1 rounded-lg">PPDB26-AB3XY7KZ</code>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 bg-primary-400 rounded-full"></span>
-          <code class="text-xs text-primary-600 font-mono bg-primary-50 px-2 py-1 rounded-lg">PPDB260002</code>
+          <code class="text-xs text-primary-600 font-mono bg-primary-50 px-2 py-1 rounded-lg">PPDB26-QM9ZR2WP</code>
         </div>
       </div>
       <p class="text-xs text-gray-400 mt-3">Nomor pendaftaran dikirim ke email Anda setelah submit formulir.</p>
@@ -284,7 +284,7 @@
 
 @push('scripts')
 <script>
-  // Auto-isi dan auto-submit dari query param ?kode=PPDB260001
+  // Auto-isi dan auto-submit dari query param ?kode=PPDB26-AB3XY7KZ
   (function() {
     const kode = new URLSearchParams(window.location.search).get('kode');
     if (!kode) return;

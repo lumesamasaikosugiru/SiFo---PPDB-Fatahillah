@@ -29,7 +29,7 @@
             <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
           </div>
           <input type="text" name="kode" id="input-kode"
-                 placeholder="Contoh: PPDB260001"
+                 placeholder="Contoh: PPDB26-AB3XY7KZ"
                  oninput="this.value=this.value.toUpperCase()"
                  class="w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-gray-50 transition-all font-mono tracking-wider"
                  required>

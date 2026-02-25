@@ -49,7 +49,7 @@
           ['Kode Pendaftaran', $pendaftaran->kode_regis, true],
           ['Nama Siswa', $pendaftaran->siswa->nama_siswa ?? '-', false],
           ['Sekolah', $pendaftaran->sekolah->nama_sekolah ?? '-', false],
-          ['Nominal', 'Rp 300.000', false],
+          ['Nominal', 'Rp 200.000', false],
           ['Status Bayar', $pembayaran->labelStatus ?? ucfirst($pembayaran->status_pembayaran), false],
         ] as [$lbl, $val, $mono])
         <div class="flex flex-col gap-0.5 p-3 bg-gray-50 rounded-xl">

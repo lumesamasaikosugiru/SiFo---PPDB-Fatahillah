@@ -15,7 +15,7 @@ use Carbon\Carbon;
 
 class PembayaranController extends Controller
 {
-    const NOMINAL = 300000;
+    const NOMINAL = 200000;
 
     const WA_ADMIN = [
         1 => '6208993388681',
@@ -47,7 +47,7 @@ class PembayaranController extends Controller
     public function cek(Request $request)
     {
         $request->validate([
-            'kode_registrasi' => 'required|string|max:20',
+            'kode_registrasi' => ['required', 'string', 'max:20', 'regex:/^PPDB[0-9]{2}-[A-Z0-9]{8}$/i'],
         ], [
             'kode_registrasi.required' => 'Nomor pendaftaran wajib diisi.',
         ]);
@@ -384,7 +384,7 @@ class PembayaranController extends Controller
 
     // =============================================
     // 3E. HALAMAN LANJUTKAN MIDTRANS — untuk pending
-    //     GET /bayar/lanjut?kode=PPDB260001
+    //     GET /bayar/lanjut?kode=PPDB26-AB3XY7KZ
     // =============================================
     public function snapLanjut(Request $request)
     {
@@ -498,7 +498,7 @@ class PembayaranController extends Controller
 
     // =============================================
     // 3G. HALAMAN SUKSES PEMBAYARAN MIDTRANS
-    //     GET /bayar/sukses?kode=PPDB260001
+    //     GET /bayar/sukses?kode=PPDB26-AB3XY7KZ
     // =============================================
     public function sukses(Request $request)
     {
@@ -603,7 +603,7 @@ class PembayaranController extends Controller
 
     // =============================================
     // 3I. DOWNLOAD PDF Formulir Pendaftaran
-    //     GET /bayar/download-pdf?kode=PPDB260001
+    //     GET /bayar/download-pdf?kode=PPDB26-AB3XY7KZ
     // =============================================
     public function downloadPdf(Request $request)
     {

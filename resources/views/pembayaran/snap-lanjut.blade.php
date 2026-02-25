@@ -43,7 +43,7 @@
           ['Nomor Pendaftaran', $kodeRegis, true],
           ['Nama Siswa', $namaSiswa, false],
           ['Sekolah Tujuan', $namaSekolah, false],
-          ['Nominal', 'Rp 300.000', false],
+          ['Nominal', 'Rp 200.000', false],
           ['Status', 'Menunggu Pembayaran', false],
         ] as [$lbl, $val, $mono])
         <div class="flex flex-col gap-0.5 p-3 bg-gray-50 rounded-xl">
