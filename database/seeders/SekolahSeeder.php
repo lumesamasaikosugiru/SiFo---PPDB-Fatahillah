@@ -2,42 +2,42 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class SekolahSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        DB::table('sekolahs')->insert([
+        $data = [
             [
-                'nama_sekolah' => 'SMK YPF 1 Kramatwatu',
+                'nama_sekolah' => 'SMK YP Fatahillah 1 Kramatwatu',
                 'tingkatan' => 'SMK',
                 'alamat' => 'Jl. Gsi, Kramatwatu',
                 'kuota' => '100',
             ],
             [
-                'nama_sekolah' => 'SMK YPF 1 Cilegon',
+                'nama_sekolah' => 'SMK YP Fatahillah 1 Cilegon',
                 'tingkatan' => 'SMK',
                 'alamat' => 'Jl. Kubang Sepat, Cilegon',
                 'kuota' => '190',
             ],
             [
-                'nama_sekolah' => 'SMK YPF 2 Cilegon',
+                'nama_sekolah' => 'SMK YP Fatahillah 2 Cilegon',
                 'tingkatan' => 'SMK',
                 'alamat' => 'Jl.Kubang Sepat, Cilegon',
                 'kuota' => '180',
             ],
             [
-                'nama_sekolah' => 'SMP YPF Cilegon',
+                'nama_sekolah' => 'SMP YP Fatahillah Cilegon',
                 'tingkatan' => 'SMP',
                 'alamat' => 'Jl.Kubang Sepat, Cilegon',
                 'kuota' => '90',
             ],
-        ]);
+        ];
+        DB::table('sekolahs')->truncate();
+        foreach ($data as $item) {
+            DB::table('sekolahs')->insert($item);
+        }
     }
 }

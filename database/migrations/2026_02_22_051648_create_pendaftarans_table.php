@@ -30,7 +30,9 @@ return new class extends Migration {
                 'diterima',
                 'ditolak',
                 'menunggu_pembayaran',
+                'pembayaran_diproses',
                 'pembayaran_lunas',
+                'selesai',
             ])->default('diproses');
 
             $table->date('tanggal_submit');
