@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TahunAkademik extends Model
 {
-    protected $fillable =
-        [
-            'tahun',
-            'is_active',
-        ];
+    protected $table = 'tahun_akademiks';
+
+    protected $fillable = [
+        'tahun',
+        'is_active',
+    ];
 
     public function pendaftarans(): HasMany
     {

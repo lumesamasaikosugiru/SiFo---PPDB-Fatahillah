@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Dokumen extends Model
 {
-    protected $fillable =
-        [
-            'pendaftaran_id',
-            'tipe_dokumen',
-            'file_path',
-        ];
+    protected $table = 'dokumens';
+
+    protected $fillable = [
+        'pendaftaran_id',
+        'tipe_dokumen',
+        'file_path',
+    ];
+
+    // ===================== RELASI =====================
 
     public function pendaftaran(): BelongsTo
     {
-        return $this->belongsTo(Pendaftaran::class);
+        return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
     }
 }

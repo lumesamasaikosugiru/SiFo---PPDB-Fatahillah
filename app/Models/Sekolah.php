@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Sekolah extends Model
 {
-    protected $fillable =
-        [
-            'nama_sekolah',
-            'tingkatan',
-            'alamat',
-            'kuota',
-        ];
+    protected $table = 'sekolahs';
+
+    protected $fillable = [
+        'nama_sekolah',
+        'tingkatan',
+        'alamat',
+        'kuota',
+        'deskripsi',
+        'logo',
+    ];
+
+    // ===================== RELASI =====================
 
     public function pendaftarans(): HasMany
     {
@@ -25,8 +30,14 @@ class Sekolah extends Model
         return $this->hasMany(Jurusan::class, 'sekolah_id');
     }
 
+    // Alias 'jurusan' untuk backward compat di views
+    public function jurusan(): HasMany
+    {
+        return $this->hasMany(Jurusan::class, 'sekolah_id');
+    }
+
     public function adminSekolahs(): HasMany
     {
-        return $this->hasMany(adminSekolah::class, 'sekolah_id');
+        return $this->hasMany(AdminSekolah::class, 'sekolah_id');
     }
 }
