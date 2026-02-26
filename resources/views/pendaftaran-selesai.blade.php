@@ -8,6 +8,30 @@
 <script>
   // Reset cache form agar kosong saat buka /daftar lagi
   try { localStorage.removeItem('ppdb_form_cache_2026'); } catch(e) {}
+
+  function salinKode(elId, btn) {
+    const teks = document.getElementById(elId)?.textContent?.trim();
+    if (!teks) return;
+    navigator.clipboard.writeText(teks).then(() => {
+      const iconCopy  = document.getElementById('icon-copy-' + elId);
+      const iconCheck = document.getElementById('icon-check-' + elId);
+      if (iconCopy)  iconCopy.classList.add('hidden');
+      if (iconCheck) iconCheck.classList.remove('hidden');
+      btn.classList.add('bg-white/40');
+      setTimeout(() => {
+        if (iconCopy)  iconCopy.classList.remove('hidden');
+        if (iconCheck) iconCheck.classList.add('hidden');
+        btn.classList.remove('bg-white/40');
+      }, 2000);
+    }).catch(() => {
+      // Fallback untuk browser lama
+      const ta = document.createElement('textarea');
+      ta.value = teks; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+  }
 </script>
 @endpush
 
@@ -39,8 +63,22 @@
         {{-- Nomor Pendaftaran --}}
         <div class="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-6 text-center text-white mb-8">
           <p class="text-xs font-semibold uppercase tracking-widest opacity-75 mb-2">Nomor Pendaftaran Anda</p>
-          <p class="text-4xl font-extrabold tracking-widest font-mono">{{ $pendaftaran->kode_regis }}</p>
-          <p class="text-xs opacity-70 mt-2">Simpan nomor ini untuk mengecek status pendaftaran</p>
+          <div class="flex items-center justify-center gap-3 my-1">
+            <p class="text-4xl font-extrabold tracking-widest font-mono" id="kode-pendaftaran">{{ $pendaftaran->kode_regis }}</p>
+            <button onclick="salinKode('kode-pendaftaran', this)"
+                    title="Salin kode"
+                    class="flex-shrink-0 w-9 h-9 bg-white/20 hover:bg-white/35 active:bg-white/50 rounded-xl flex items-center justify-center transition-all group">
+              {{-- icon copy --}}
+              <svg id="icon-copy-kode-pendaftaran" class="w-4 h-4 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              {{-- icon check (hidden) --}}
+              <svg id="icon-check-kode-pendaftaran" class="w-4 h-4 text-green-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs opacity-70 mt-1">Ketuk ikon salin untuk menyimpan nomor ini</p>
         </div>
 
         {{-- Info Pendaftaran --}}
