@@ -138,7 +138,7 @@
   <div class="bg-gradient-to-r from-primary-500 to-teal-500 rounded-3xl px-7 py-6 flex items-center justify-between shadow-lg">
     <div>
       <p class="text-white/75 text-xs font-semibold uppercase tracking-widest mb-1">Total Tagihan</p>
-      <p class="text-white text-5xl font-extrabold tracking-tight leading-none">Rp 300.000</p>
+      <p class="text-white text-5xl font-extrabold tracking-tight leading-none">Rp 200.000</p>
       <p class="text-white/70 text-xs mt-2">Uang pendaftaran PPDB 2026/2027 — dibayar sekali</p>
     </div>
     <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center shrink-0">
@@ -246,7 +246,7 @@
             </div>
             <div class="px-4 py-3 bg-blue-50 border-t border-blue-100 flex items-center justify-between">
               <span class="text-xs text-blue-700 font-medium">⚠️ Transfer tepat sejumlah:</span>
-              <span class="text-base font-extrabold text-blue-800">Rp 300.000</span>
+              <span class="text-base font-extrabold text-blue-800">Rp 200.000</span>
             </div>
           </div>
         </div>
@@ -277,7 +277,7 @@
           <p class="text-xs font-bold text-blue-800 mb-2">📋 Petunjuk Transfer</p>
           <ol class="text-xs text-blue-700 space-y-1.5 list-decimal list-inside">
             <li>Pilih salah satu rekening bank di atas</li>
-            <li>Transfer <strong>tepat Rp 300.000</strong> ke rekening tersebut</li>
+            <li>Transfer <strong>tepat Rp 200.000</strong> ke rekening tersebut</li>
             <li>Simpan bukti transfer (screenshot / struk ATM)</li>
             <li>Upload bukti di bawah, lalu klik <strong>Submit Pembayaran</strong></li>
           </ol>
@@ -286,7 +286,7 @@
         {{-- Info Cash --}}
         <div id="info-cash" class="hidden bg-green-50 border border-green-200 rounded-2xl p-4">
           <p class="text-xs font-bold text-green-800 mb-2">📍 Cara Bayar Tunai</p>
-          <p class="text-xs text-green-700">Datang ke <strong>{{ $pendaftaran->sekolah->nama_sekolah ?? 'sekolah tujuan' }}</strong> dengan membawa nomor <strong>{{ $pendaftaran->kode_regis }}</strong> dan uang tunai <strong>Rp 300.000</strong>.</p>
+          <p class="text-xs text-green-700">Datang ke <strong>{{ $pendaftaran->sekolah->nama_sekolah ?? 'sekolah tujuan' }}</strong> dengan membawa nomor <strong>{{ $pendaftaran->kode_regis }}</strong> dan uang tunai <strong>Rp 200.000</strong>.</p>
         </div>
 
         {{-- Upload Bukti --}}

@@ -15,7 +15,7 @@ class StatusController extends Controller
     public function check(Request $request)
     {
         $request->validate([
-            'kode_registrasi' => 'required|string|max:20',
+            'kode_registrasi' => ['required', 'string', 'max:20', 'regex:/^PPDB[0-9]{2}-[A-Z0-9]{8}$/i'],
         ], [
             'kode_registrasi.required' => 'Nomor pendaftaran wajib diisi.',
         ]);

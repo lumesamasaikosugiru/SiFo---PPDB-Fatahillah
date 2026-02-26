@@ -36,7 +36,7 @@
       </div>
       <div class="flex items-center justify-between text-sm mb-2">
         <span class="text-gray-500">Nominal</span>
-        <span class="font-bold text-gray-900">Rp 300.000</span>
+        <span class="font-bold text-gray-900">Rp 200.000</span>
       </div>
       <div class="flex items-center justify-between text-sm">
         <span class="text-gray-500">Status</span>

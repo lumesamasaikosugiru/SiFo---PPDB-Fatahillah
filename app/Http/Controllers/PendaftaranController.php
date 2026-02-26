@@ -260,19 +260,20 @@ class PendaftaranController extends Controller
 
     // =============================================
     // GENERATE KODE REGISTRASI
+    // Format: PPDB26-XXXXXXXX (8 karakter random huruf+angka)
+    // Contoh: PPDB26-AB3XY7KZ
     // =============================================
     public function generateKodeRegistrasi(): string
     {
-        $year   = date('y');
-        $prefix = "PPDB{$year}";
+        $year   = date('y'); // 2 digit tahun: 26, 27, dst
+        $prefix = "PPDB{$year}-";
 
-        $last = Pendaftaran::where('kode_regis', 'like', "{$prefix}%")
-            ->orderBy('kode_regis', 'desc')
-            ->first();
+        // Generate unik — retry jika collision (sangat jarang terjadi)
+        do {
+            $kode = $prefix . strtoupper(\Illuminate\Support\Str::random(8));
+        } while (Pendaftaran::where('kode_regis', $kode)->exists());
 
-        $number = $last ? (intval(substr($last->kode_regis, strlen($prefix))) + 1) : 1;
-
-        return $prefix . str_pad($number, 4, '0', STR_PAD_LEFT);
+        return $kode;
     }
 
     // =============================================

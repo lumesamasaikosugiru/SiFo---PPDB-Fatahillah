@@ -74,7 +74,7 @@
           ['Jurusan',        $namaJurusan, false],
           ['Jalur',          $jalur,       false],
           ['Metode Bayar',   $namaMetode,  false],
-          ['Nominal',        'Rp 300.000', false],
+          ['Nominal',        'Rp 200.000', false],
         ] as [$lbl, $val, $mono])
         <div class="flex flex-col gap-0.5 p-3 bg-gray-50 rounded-xl">
           <span class="text-xs text-gray-400 font-medium">{{ $lbl }}</span>
