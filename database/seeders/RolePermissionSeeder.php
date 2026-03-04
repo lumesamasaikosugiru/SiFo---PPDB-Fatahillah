@@ -44,6 +44,7 @@ class RolePermissionSeeder extends Seeder
 
             // pembayaran
             'pembayaran.view',
+            'pembayaran.create',
             'pembayaran.verify',
 
             // master
@@ -80,6 +81,7 @@ class RolePermissionSeeder extends Seeder
             'pendaftaran.create',
             'pendaftaran.update_status',
             'pembayaran.view',
+            'pembayaran.create',
             'pembayaran.verify',
         ]);
 

@@ -62,4 +62,20 @@ class PendaftaranResource extends Resource
         ];
     }
 
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('pendaftaran.create');
+    }
+
+    public static function canView(Model $record): bool
+    {
+        return auth()->user()->can('pendaftaran.view');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can('pendaftaran.update_status');
+    }
+
 }

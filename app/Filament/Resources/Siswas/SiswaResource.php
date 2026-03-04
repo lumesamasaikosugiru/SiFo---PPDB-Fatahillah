@@ -11,6 +11,7 @@ use App\Filament\Resources\Siswas\Schemas\SiswaInfolist;
 use App\Filament\Resources\Siswas\Tables\SiswasTable;
 use App\Models\Siswa;
 use BackedEnum;
+use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -58,5 +59,10 @@ class SiswaResource extends Resource
             'view' => ViewSiswa::route('/{record}'),
             'edit' => EditSiswa::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

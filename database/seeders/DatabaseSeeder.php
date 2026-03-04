@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             JurusanSeeder::class,
             PendaftaranSeeder::class,
             MetodePembayaran::class,
+            PembayaranSeeder::class,
         ]);
     }
 }

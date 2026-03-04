@@ -66,8 +66,7 @@ class PembayaranResource extends Resource
 
     public static function canCreate(): bool
     {
-        // pembayaran tidak dibuat dari panel admin
-        return false;
+        return auth()->user()->can('pembayaran.create');
     }
 
     public static function canEdit(Model $record): bool
