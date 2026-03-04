@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_regis', 10)->unique();
+            $table->string('kode_regis', 16)->unique();
             $table->foreignId('tahun_akademik_id')->nullable()->constrained('tahun_akademiks')->nullOnDelete();
             $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->nullOnDelete();
             $table->foreignId('jurusan_id')->nullable()->constrained('jurusans')->nullOnDelete();

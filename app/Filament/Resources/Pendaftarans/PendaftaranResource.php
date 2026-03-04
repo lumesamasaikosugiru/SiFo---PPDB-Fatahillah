@@ -11,6 +11,7 @@ use App\Filament\Resources\Pendaftarans\Schemas\PendaftaranInfolist;
 use App\Filament\Resources\Pendaftarans\Tables\PendaftaransTable;
 use App\Models\Pendaftaran;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -60,4 +61,5 @@ class PendaftaranResource extends Resource
             'edit' => EditPendaftaran::route('/{record}/edit'),
         ];
     }
+
 }

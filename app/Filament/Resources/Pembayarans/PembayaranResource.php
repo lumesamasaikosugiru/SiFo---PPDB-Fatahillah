@@ -11,6 +11,7 @@ use App\Filament\Resources\Pembayarans\Schemas\PembayaranInfolist;
 use App\Filament\Resources\Pembayarans\Tables\PembayaransTable;
 use App\Models\Pembayaran;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -56,7 +57,22 @@ class PembayaranResource extends Resource
             'index' => ListPembayarans::route('/'),
             'create' => CreatePembayaran::route('/create'),
             'view' => ViewPembayaran::route('/{record}'),
-            'edit' => EditPembayaran::route('/{record}/edit'),
         ];
+    }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('pembayaran.view');
+    }
+
+    public static function canCreate(): bool
+    {
+        // pembayaran tidak dibuat dari panel admin
+        return false;
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        // hanya admin sekolah & superadmin (sesuai seeder)
+        return auth()->user()->can('pembayaran.verify');
     }
 }

@@ -59,4 +59,12 @@ class SekolahResource extends Resource
             'edit' => EditSekolah::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasAnyRole([
+            'superadmin',
+            'admin_yayasan',
+        ]);
+    }
 }

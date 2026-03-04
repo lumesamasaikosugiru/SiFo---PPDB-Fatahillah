@@ -60,4 +60,12 @@ class JurusanResource extends Resource
             'edit' => EditJurusan::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasAnyRole([
+            'superadmin',
+            'admin_yayasan',
+        ]);
+    }
 }
