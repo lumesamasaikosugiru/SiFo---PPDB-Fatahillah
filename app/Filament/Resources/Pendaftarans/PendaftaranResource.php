@@ -22,7 +22,7 @@ class PendaftaranResource extends Resource
 {
     protected static ?string $model = Pendaftaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     protected static ?string $recordTitleAttribute = 'kode_regis';
 

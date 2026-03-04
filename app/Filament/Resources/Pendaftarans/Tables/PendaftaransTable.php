@@ -2,12 +2,17 @@
 
 namespace App\Filament\Resources\Pendaftarans\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Select;
+use Filament\Support\Colors\Color;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class PendaftaransTable
 {
@@ -45,8 +50,37 @@ class PendaftaransTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                // ViewAction::make(),
+                // EditAction::make(),
+                Action::make('approve')
+                    ->label('Ubah Status')
+                    ->badge()
+                    ->color(Color::Lime)
+                    ->icon(Heroicon::QueueList)
+                    ->visible(fn() => auth()->user()->can('pendaftaran.update_status'))
+                    ->form([
+                        Select::make('status')
+                            ->label('Status Pendaftaran')
+                            ->options([
+                                'diproses' => 'Diproses',
+                                'diverifikasi' => 'Diverifikasi',
+                                'diterima' => 'Diterima',
+                                'ditolak' => 'Ditolak',
+                                'menunggu_pembayaran' => 'Menunggu Pembayaran',
+                                'pembayaran_diproses' => 'Pembayaran Diproses',
+                                'pembayaran_lunas' => 'Pembayaran Lunas',
+                                'selesai' => 'Selesai',
+                            ])
+                            ->required(),
+                    ])
+                    ->action(function (Model $record, array $data) {
+                        $record->update([
+                            'status' => $data['status'],
+                        ]);
+                    })
+                    ->requiresConfirmation()
+                    ->modalHeading('Ubah Status Pendaftaran')
+                    ->modalSubmitActionLabel('Simpan')
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

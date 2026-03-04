@@ -21,7 +21,7 @@ class TahunAkademikResource extends Resource
 {
     protected static ?string $model = TahunAkademik::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBookmarkSquare;
 
     protected static ?string $recordTitleAttribute = 'tahun';
     protected static ?int $navigationSort = 3;

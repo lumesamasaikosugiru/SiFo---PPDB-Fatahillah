@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Pembayarans;
 
 use App\Filament\Resources\Pembayarans\Pages\CreatePembayaran;
-use App\Filament\Resources\Pembayarans\Pages\EditPembayaran;
+// use App\Filament\Resources\Pembayarans\Pages\EditPembayaran;
 use App\Filament\Resources\Pembayarans\Pages\ListPembayarans;
 use App\Filament\Resources\Pembayarans\Pages\ViewPembayaran;
 use App\Filament\Resources\Pembayarans\Schemas\PembayaranForm;
@@ -22,7 +22,7 @@ class PembayaranResource extends Resource
 {
     protected static ?string $model = Pembayaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBanknotes;
 
     protected static ?string $recordTitleAttribute = 'Pembayaran';
     protected static ?int $navigationSort = 7;
