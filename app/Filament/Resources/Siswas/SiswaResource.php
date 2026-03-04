@@ -21,7 +21,7 @@ class SiswaResource extends Resource
 {
     protected static ?string $model = Siswa::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
     protected static ?string $recordTitleAttribute = 'nama_siswa';
     protected static ?int $navigationSort = 5;
@@ -58,5 +58,10 @@ class SiswaResource extends Resource
             'view' => ViewSiswa::route('/{record}'),
             'edit' => EditSiswa::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

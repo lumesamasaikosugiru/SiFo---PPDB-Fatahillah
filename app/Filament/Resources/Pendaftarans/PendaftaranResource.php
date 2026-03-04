@@ -11,6 +11,7 @@ use App\Filament\Resources\Pendaftarans\Schemas\PendaftaranInfolist;
 use App\Filament\Resources\Pendaftarans\Tables\PendaftaransTable;
 use App\Models\Pendaftaran;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -21,7 +22,7 @@ class PendaftaranResource extends Resource
 {
     protected static ?string $model = Pendaftaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     protected static ?string $recordTitleAttribute = 'kode_regis';
 
@@ -60,4 +61,21 @@ class PendaftaranResource extends Resource
             'edit' => EditPendaftaran::route('/{record}/edit'),
         ];
     }
+
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('pendaftaran.create');
+    }
+
+    public static function canView(Model $record): bool
+    {
+        return auth()->user()->can('pendaftaran.view');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can('pendaftaran.update_status');
+    }
+
 }

@@ -21,7 +21,7 @@ class JurusanResource extends Resource
 {
     protected static ?string $model = Jurusan::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBookOpen;
 
     protected static ?string $recordTitleAttribute = 'nama_jurusan';
 
@@ -59,5 +59,13 @@ class JurusanResource extends Resource
             'view' => ViewJurusan::route('/{record}'),
             'edit' => EditJurusan::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasAnyRole([
+            'superadmin',
+            'admin_yayasan',
+        ]);
     }
 }

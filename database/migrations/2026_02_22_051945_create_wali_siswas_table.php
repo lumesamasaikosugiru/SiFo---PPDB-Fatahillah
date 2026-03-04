@@ -21,7 +21,7 @@ return new class extends Migration {
             ]);
             $table->string('pekerjaan', 30);
             $table->string('notelp_wali', 15);
-            $table->string('email', 15);
+            $table->string('email', 30);
             $table->timestamps();
         });
     }

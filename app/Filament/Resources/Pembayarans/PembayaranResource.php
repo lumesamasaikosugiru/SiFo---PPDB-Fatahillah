@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Pembayarans;
 
 use App\Filament\Resources\Pembayarans\Pages\CreatePembayaran;
-use App\Filament\Resources\Pembayarans\Pages\EditPembayaran;
+// use App\Filament\Resources\Pembayarans\Pages\EditPembayaran;
 use App\Filament\Resources\Pembayarans\Pages\ListPembayarans;
 use App\Filament\Resources\Pembayarans\Pages\ViewPembayaran;
 use App\Filament\Resources\Pembayarans\Schemas\PembayaranForm;
@@ -11,6 +11,7 @@ use App\Filament\Resources\Pembayarans\Schemas\PembayaranInfolist;
 use App\Filament\Resources\Pembayarans\Tables\PembayaransTable;
 use App\Models\Pembayaran;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -21,7 +22,7 @@ class PembayaranResource extends Resource
 {
     protected static ?string $model = Pembayaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBanknotes;
 
     protected static ?string $recordTitleAttribute = 'Pembayaran';
     protected static ?int $navigationSort = 7;
@@ -56,7 +57,21 @@ class PembayaranResource extends Resource
             'index' => ListPembayarans::route('/'),
             'create' => CreatePembayaran::route('/create'),
             'view' => ViewPembayaran::route('/{record}'),
-            'edit' => EditPembayaran::route('/{record}/edit'),
         ];
+    }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('pembayaran.view');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('pembayaran.create');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        // hanya admin sekolah & superadmin (sesuai seeder)
+        return auth()->user()->can('pembayaran.verify');
     }
 }
