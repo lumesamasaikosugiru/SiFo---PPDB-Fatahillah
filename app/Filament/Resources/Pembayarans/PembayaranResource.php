@@ -11,12 +11,14 @@ use App\Filament\Resources\Pembayarans\Schemas\PembayaranInfolist;
 use App\Filament\Resources\Pembayarans\Tables\PembayaransTable;
 use App\Models\Pembayaran;
 use BackedEnum;
+use Illuminate\Database\Console\Migrations\StatusCommand;
 use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use function PHPUnit\Framework\returnArgument;
 
 class PembayaranResource extends Resource
 {
@@ -71,7 +73,10 @@ class PembayaranResource extends Resource
 
     public static function canEdit(Model $record): bool
     {
-        // hanya admin sekolah & superadmin (sesuai seeder)
-        return auth()->user()->can('pembayaran.verify');
+        // cuma admin sekolah & superadmin 
+        return auth()->user()->can('pembayaran.verify')
+            && $record->status_pembayaran !== 'kadaluarsa';   //mencegah edit record yg udah kadaluarsa
     }
+
+
 }
