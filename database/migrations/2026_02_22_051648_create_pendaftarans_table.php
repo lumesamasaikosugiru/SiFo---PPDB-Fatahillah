@@ -35,7 +35,7 @@ return new class extends Migration {
                 'selesai',
             ])->default('diproses');
 
-            $table->foreignId('diverifikasi_oleh')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('diverifikasi_oleh')->nullable()->constrained('users')->nullOnDelete();
             $table->date('tanggal_submit');
             $table->enum('dibuat_oleh', ['publik', 'admin'])->default('publik');
             $table->timestamps();

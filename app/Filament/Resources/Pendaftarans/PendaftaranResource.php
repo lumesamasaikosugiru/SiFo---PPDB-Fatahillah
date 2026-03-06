@@ -79,29 +79,11 @@ class PendaftaranResource extends Resource
         return auth()->user()->can('pendaftaran.update_status');
     }
 
-
-
+    // kode ini yg membatasi informasi pendaftaran tiap sekolah, harus "use TenantSekolah di Model"
     public static function getEloquentQuery(): Builder
     {
 
         return parent::getEloquentQuery()->sekolah();
-
-        // $query = parent::getEloquentQuery();
-
-        // $user = auth()->user();
-
-        // if ($user->hasAnyRole(['superadmin', 'admin_yayasan'])) {
-        //     return $query;
-        // }
-
-        // if ($user->adminSekolah?->sekolah_id) {
-        //     return $query->where(
-        //         'sekolah_id',
-        //         $user->adminSekolah->sekolah_id
-        //     );
-        // }
-
-        // return $query;
     }
 
 }

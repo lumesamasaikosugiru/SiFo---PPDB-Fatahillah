@@ -64,6 +64,8 @@ class PendaftaransTable
                     ->label('Tanggal Submit')
                     ->date()
                     ->sortable(),
+                TextColumn::make('diverifikasi_oleh')
+                    ->label('Diverifikasi Oleh'),
                 TextColumn::make('dibuat_oleh')
                     ->badge(),
                 TextColumn::make('created_at')

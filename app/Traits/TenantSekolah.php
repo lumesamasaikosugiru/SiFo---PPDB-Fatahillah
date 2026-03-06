@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Database\Console\Migrations\StatusCommand;
 use illuminate\Database\Eloquent\Builder;
 
 trait TenantSekolah
