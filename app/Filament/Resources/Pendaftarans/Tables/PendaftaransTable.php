@@ -38,17 +38,18 @@ class PendaftaransTable
         return $table
             ->columns([
                 TextColumn::make('kode_regis')
+                    ->label('Kode Registrasi')
                     ->searchable(),
-                TextColumn::make('tahunAkademik.id')
+                TextColumn::make('TahunAkademik.tahun')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                TextColumn::make('sekolah.id')
+                TextColumn::make('sekolah.nama_sekolah')
                     ->searchable(),
-                TextColumn::make('jurusan.id')
+                TextColumn::make('jurusan.nama_jurusan')
                     ->searchable(),
                 TextColumn::make('jalur_pendaftaran')
+                    ->label('Jalur Pendaftaran')
                     ->badge(),
-                // TextColumn::make('status')
-                //     ->badge(),
                 BadgeColumn::make('status')
                     ->label('Status')
                     ->colors([
@@ -60,6 +61,7 @@ class PendaftaransTable
                         'light' => 'selesai',
                     ]),
                 TextColumn::make('tanggal_submit')
+                    ->label('Tanggal Submit')
                     ->date()
                     ->sortable(),
                 TextColumn::make('dibuat_oleh')
@@ -87,7 +89,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'diproses')),
-                    // ->badge(),
+
                     Action::make('diverifikasi')
                         ->label('Diverifikasi')
                         ->color(Color::Green)
@@ -97,7 +99,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'diverifikasi')),
-                    // ->badge(),
+
                     Action::make('diterima')
                         ->label('Diterima')
                         ->color(Color::Green)
@@ -107,7 +109,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'diterima')),
-                    // ->badge(),
+
                     Action::make('ditolak')
                         ->label('Ditolak')
                         ->color(Color::Green)
@@ -117,7 +119,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'ditolak')),
-                    // ->badge(),
+
                     Action::make('menunggu_pembayaran')
                         ->label('Menunggu Pembayaran')
                         ->color(Color::Green)
@@ -127,7 +129,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'menunggu_pembayaran')),
-                    // ->badge(),
+
                     Action::make('pembayaran_diproses')
                         ->label('Pembayaran Diproses')
                         ->color(Color::Green)
@@ -137,6 +139,7 @@ class PendaftaransTable
                         ->modalDescription('Apakah anda yakin ingin mengubah Status Pendaftaran')
                         ->modalSubmitActionLabel('Ya, Ubah Status')
                         ->action(fn(Model $record) => self::updateStatus($record, 'pembayaran_diproses')),
+
                     Action::make('pembayaran_lunas')
                         ->label('Pembayaran Lunas')
                         ->color(Color::Green)
@@ -162,6 +165,7 @@ class PendaftaransTable
                 ])
                     ->label('Ubah Status')
                     ->icon(Heroicon::PencilSquare)
+                    ->visible(fn(Model $record) => auth()->user()->can('pendaftaran.update_status') && $record->status !== 'diterima' && $record->status !== 'ditolak')
 
 
             ])

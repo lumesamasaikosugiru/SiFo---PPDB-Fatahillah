@@ -11,6 +11,7 @@ use App\Filament\Resources\Pendaftarans\Schemas\PendaftaranInfolist;
 use App\Filament\Resources\Pendaftarans\Tables\PendaftaransTable;
 use App\Models\Pendaftaran;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 use Filament\Resources\Resource;
@@ -76,6 +77,31 @@ class PendaftaranResource extends Resource
     public static function canEdit(Model $record): bool
     {
         return auth()->user()->can('pendaftaran.update_status');
+    }
+
+
+
+    public static function getEloquentQuery(): Builder
+    {
+
+        return parent::getEloquentQuery()->sekolah();
+
+        // $query = parent::getEloquentQuery();
+
+        // $user = auth()->user();
+
+        // if ($user->hasAnyRole(['superadmin', 'admin_yayasan'])) {
+        //     return $query;
+        // }
+
+        // if ($user->adminSekolah?->sekolah_id) {
+        //     return $query->where(
+        //         'sekolah_id',
+        //         $user->adminSekolah->sekolah_id
+        //     );
+        // }
+
+        // return $query;
     }
 
 }

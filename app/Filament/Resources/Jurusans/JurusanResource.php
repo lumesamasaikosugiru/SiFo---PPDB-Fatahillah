@@ -11,6 +11,7 @@ use App\Filament\Resources\Jurusans\Schemas\JurusanInfolist;
 use App\Filament\Resources\Jurusans\Tables\JurusansTable;
 use App\Models\Jurusan;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -66,6 +67,12 @@ class JurusanResource extends Resource
         return auth()->user()->hasAnyRole([
             'superadmin',
             'admin_yayasan',
+            'admin_sekolah',
         ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->sekolah();
     }
 }
