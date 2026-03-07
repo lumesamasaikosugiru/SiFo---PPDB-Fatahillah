@@ -62,7 +62,19 @@
       {{-- Kode Pendaftaran highlight --}}
       <div class="border-2 border-teal-500 rounded-2xl p-4 text-center mb-5 bg-teal-50">
         <p class="text-xs text-teal-600 font-semibold uppercase tracking-widest mb-1">Nomor Pendaftaran</p>
-        <p class="text-3xl font-extrabold font-mono tracking-widest text-teal-800">{{ $kodeRegis }}</p>
+        <div class="flex items-center justify-center gap-2.5 my-1">
+          <p class="text-3xl font-extrabold font-mono tracking-widest text-teal-800" id="kode-sukses">{{ $kodeRegis }}</p>
+          <button onclick="salinKodeSukses(this)"
+                  title="Salin kode"
+                  class="flex-shrink-0 w-8 h-8 bg-teal-100 hover:bg-teal-200 active:bg-teal-300 border border-teal-300 rounded-xl flex items-center justify-center transition-all group">
+            <svg id="icon-copy-sukses" class="w-3.5 h-3.5 text-teal-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <svg id="icon-check-sukses" class="w-3.5 h-3.5 text-teal-600 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </button>
+        </div>
         <p class="text-xs text-teal-500 mt-1">Tunjukkan nomor ini kepada panitia PPDB</p>
       </div>
 
@@ -135,5 +147,30 @@
   </div>
 
 </section>
+
+@push('scripts')
+<script>
+  function salinKodeSukses(btn) {
+    const teks = document.getElementById('kode-sukses')?.textContent?.trim();
+    if (!teks) return;
+    const iconCopy  = document.getElementById('icon-copy-sukses');
+    const iconCheck = document.getElementById('icon-check-sukses');
+    navigator.clipboard.writeText(teks).then(() => {
+      iconCopy?.classList.add('hidden');
+      iconCheck?.classList.remove('hidden');
+      setTimeout(() => {
+        iconCopy?.classList.remove('hidden');
+        iconCheck?.classList.add('hidden');
+      }, 2000);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = teks; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+  }
+</script>
+@endpush
 
 @endsection

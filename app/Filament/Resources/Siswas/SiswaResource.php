@@ -11,6 +11,7 @@ use App\Filament\Resources\Siswas\Schemas\SiswaInfolist;
 use App\Filament\Resources\Siswas\Tables\SiswasTable;
 use App\Models\Siswa;
 use BackedEnum;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -21,7 +22,7 @@ class SiswaResource extends Resource
 {
     protected static ?string $model = Siswa::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
     protected static ?string $recordTitleAttribute = 'nama_siswa';
     protected static ?int $navigationSort = 5;
@@ -58,5 +59,18 @@ class SiswaResource extends Resource
             'view' => ViewSiswa::route('/{record}'),
             'edit' => EditSiswa::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('pendaftaran', function ($query) {
+                $query->sekolah();
+            });
     }
 }

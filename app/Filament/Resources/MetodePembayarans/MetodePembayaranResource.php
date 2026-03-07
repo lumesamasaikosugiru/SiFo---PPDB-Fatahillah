@@ -21,7 +21,7 @@ class MetodePembayaranResource extends Resource
 {
     protected static ?string $model = MetodePembayaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCreditCard;
 
     protected static ?string $recordTitleAttribute = 'nama_metode';
     protected static ?int $navigationSort = 6;
@@ -58,5 +58,13 @@ class MetodePembayaranResource extends Resource
             'view' => ViewMetodePembayaran::route('/{record}'),
             'edit' => EditMetodePembayaran::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasAnyRole([
+            'superadmin',
+            'admin_yayasan',
+        ]);
     }
 }

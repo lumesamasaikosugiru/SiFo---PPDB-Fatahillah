@@ -21,7 +21,7 @@ class SekolahResource extends Resource
 {
     protected static ?string $model = Sekolah::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingOffice2;
 
     protected static ?string $recordTitleAttribute = 'nama_sekolah';
     protected static ?int $navigationSort = 1;
@@ -58,5 +58,13 @@ class SekolahResource extends Resource
             'view' => ViewSekolah::route('/{record}'),
             'edit' => EditSekolah::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasAnyRole([
+            'superadmin',
+            'admin_yayasan',
+        ]);
     }
 }

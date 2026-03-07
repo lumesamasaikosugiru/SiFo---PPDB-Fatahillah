@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\TenantSekolah;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pembayaran extends Model
 {
+    use TenantSekolah;
     protected $fillable = [
         'metode_pembayaran_id',
         'pendaftaran_id',
@@ -23,7 +25,7 @@ class Pembayaran extends Model
     protected $casts = [
         'tanggal_pembayaran' => 'date',
         'verifikasi_tanggal' => 'datetime',
-        'nominal'            => 'integer',
+        'nominal' => 'integer',
     ];
 
     // ===================== RELASI =====================
@@ -48,12 +50,12 @@ class Pembayaran extends Model
     public function getLabelStatusAttribute(): string
     {
         return match ($this->status_pembayaran) {
-            'pending'             => 'Menunggu Pembayaran',
+            'pending' => 'Menunggu Pembayaran',
             'menunggu_verifikasi' => 'Menunggu Verifikasi Admin',
-            'sukses'              => 'Pembayaran Lunas ✓',
-            'gagal'               => 'Pembayaran Gagal',
-            'kadaluarsa'          => 'Kadaluarsa',
-            default               => ucfirst($this->status_pembayaran),
+            'sukses' => 'Pembayaran Lunas ✓',
+            'gagal' => 'Pembayaran Gagal',
+            'kadaluarsa' => 'Kadaluarsa',
+            default => ucfirst($this->status_pembayaran),
         };
     }
 

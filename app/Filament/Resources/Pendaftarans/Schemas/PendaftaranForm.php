@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Pendaftarans\Schemas;
 
 use App\Models\Jurusan;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
@@ -27,7 +28,10 @@ class PendaftaranForm
                     ->afterStateUpdated(function (Set $set) {
                         $set('jurusan_id', '');
                     })
-                    ->required(),
+                    ->dehydrated()
+                    ->disabled(),
+                Hidden::make('sekolah_id')
+                    ->default(fn() => auth()->user()->adminSekolah->sekolah_id),
 
                 Select::make('jurusan_id')
                     ->relationship('jurusan', 'nama_jurusan')
