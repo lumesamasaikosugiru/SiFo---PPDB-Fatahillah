@@ -45,6 +45,9 @@ class PendaftaransTable
                     ->searchable(),
                 TextColumn::make('sekolah.nama_sekolah')
                     ->searchable(),
+                TextColumn::make('siswa.asal_sekolah')
+                    ->label('Asal Sekolah')
+                    ->searchable(),
                 TextColumn::make('jurusan.nama_jurusan')
                     ->searchable(),
                 TextColumn::make('jalur_pendaftaran')
