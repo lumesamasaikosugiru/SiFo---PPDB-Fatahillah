@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\TenantSekolah;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Jurusan extends Model
 {
+    use TenantSekolah;
     protected $table = 'jurusans';
 
     protected $fillable = [

@@ -67,14 +67,18 @@ class PembayaransTable
     {
         return $table
             ->columns([
-                TextColumn::make('metodePembayaran.id')
+                TextColumn::make('metodePembayaran.nama_metode')
+                    ->label('Pembayaran')
                     ->searchable(),
-                TextColumn::make('pendaftaran.id')
+                TextColumn::make('pendaftaran.kode_regis')
+                    ->label('Kode Registrasi')
                     ->searchable(),
                 TextColumn::make('nominal')
                     ->numeric()
+                    ->prefix('Rp.')
                     ->sortable(),
                 TextColumn::make('order_id')
+                    ->label('ID Order')
                     ->searchable(),
                 BadgeColumn::make('status_pembayaran')
                     ->label('Status Pembayaran')
@@ -85,6 +89,7 @@ class PembayaransTable
                         'warning' => 'kadaluarsa',
                     ]),
                 TextColumn::make('tanggal_pembayaran')
+                    ->label('Tanggal Pembayaran')
                     ->date()
                     ->sortable(),
                 TextColumn::make('created_at')

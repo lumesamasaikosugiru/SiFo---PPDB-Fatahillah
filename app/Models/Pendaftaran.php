@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\TenantSekolah;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pendaftaran extends Model
 {
+    use TenantSekolah;
     protected $table = 'pendaftarans';
 
     protected $fillable = [
@@ -19,6 +21,7 @@ class Pendaftaran extends Model
         'jalur_pendaftaran',
         'ket_jalur_pendaftaran',
         'status',
+        'diverifikasi_oleh',
         'tanggal_submit',
         'dibuat_oleh',
     ];
@@ -37,6 +40,10 @@ class Pendaftaran extends Model
     public function sekolah(): BelongsTo
     {
         return $this->belongsTo(Sekolah::class, 'sekolah_id');
+    }
+    public function userVerifikator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'diverifikasi_oleh');
     }
 
     public function jurusan(): BelongsTo

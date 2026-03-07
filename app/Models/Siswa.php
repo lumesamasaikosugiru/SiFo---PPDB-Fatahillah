@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\TenantSekolah;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Siswa extends Model
 {
+    use TenantSekolah;
     protected $table = 'siswas';
 
     protected $fillable = [
