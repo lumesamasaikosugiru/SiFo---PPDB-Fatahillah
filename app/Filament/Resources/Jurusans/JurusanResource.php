@@ -71,6 +71,11 @@ class JurusanResource extends Resource
         ]);
     }
 
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('master.manage');
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->sekolah();
