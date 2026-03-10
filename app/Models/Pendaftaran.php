@@ -56,9 +56,9 @@ class Pendaftaran extends Model
         return $this->hasOne(Siswa::class, 'pendaftaran_id');
     }
 
-    public function waliSiswas(): HasMany
+    public function waliSiswa(): HasOne
     {
-        return $this->hasMany(WaliSiswa::class, 'pendaftaran_id');
+        return $this->hasOne(WaliSiswa::class, 'pendaftaran_id');
     }
 
     public function dokumens(): HasMany

@@ -26,7 +26,7 @@ class MetodePembayaran extends Seeder
             ],
             [
                 'nama_metode' => 'cash',
-                'deskripsi' => 'null',
+                'deskripsi' => 'Cash',
                 'is_active' => '1',
             ],
         ]);

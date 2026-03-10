@@ -86,4 +86,5 @@ class PendaftaranResource extends Resource
         return parent::getEloquentQuery()->sekolah();
     }
 
+
 }

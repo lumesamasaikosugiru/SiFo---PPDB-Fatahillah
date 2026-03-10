@@ -69,6 +69,10 @@ class PembayaransTable
             ->columns([
                 TextColumn::make('metodePembayaran.nama_metode')
                     ->label('Pembayaran')
+                    ->badge()
+                    ->searchable(),
+                TextColumn::make('pendaftaran.nama_siswa')
+                    ->label('Calon Murid')
                     ->searchable(),
                 TextColumn::make('pendaftaran.kode_regis')
                     ->label('Kode Registrasi')
@@ -79,6 +83,7 @@ class PembayaransTable
                     ->sortable(),
                 TextColumn::make('order_id')
                     ->label('ID Order')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 BadgeColumn::make('status_pembayaran')
                     ->label('Status Pembayaran')
@@ -92,6 +97,9 @@ class PembayaransTable
                     ->label('Tanggal Pembayaran')
                     ->date()
                     ->sortable(),
+                TextColumn::make('verifikator.name')
+                    ->label('Diverifikasi Oleh')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

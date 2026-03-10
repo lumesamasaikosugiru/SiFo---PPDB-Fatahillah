@@ -23,7 +23,7 @@ class PendaftaransTable
     {
         $record->update([
             'status' => $status,
-            // 'status_updated_by' => auth()->id(),
+            'diverifikasi_oleh' => auth()->id(),
             // 'status_updated_at' => now(),
         ]);
 
@@ -67,7 +67,7 @@ class PendaftaransTable
                     ->label('Tanggal Submit')
                     ->date()
                     ->sortable(),
-                TextColumn::make('diverifikasi_oleh')
+                TextColumn::make('userVerifikator.name')
                     ->label('Diverifikasi Oleh'),
                 TextColumn::make('dibuat_oleh')
                     ->badge(),
