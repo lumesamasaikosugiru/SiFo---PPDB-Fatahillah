@@ -17,6 +17,7 @@ class Pembayaran extends Model
         'snap_token',
         'status_pembayaran',
         'tanggal_pembayaran',
+        'catatan',
         'proof_path',
         'verifikasi_oleh',
         'verifikasi_tanggal',
@@ -46,6 +47,25 @@ class Pembayaran extends Model
     }
 
     // ===================== HELPERS =====================
+
+
+    public function getNamaSiswaAttribute(): string
+    {
+        return $this->pendaftaran->siswa->nama_siswa ?? '';
+    }
+
+    public function getNamaSekolahAttribute(): string
+    {
+        return $this->pendaftaran->sekolah->nama_sekolah ?? '';
+    }
+    public function getNamaJurusanAttribute(): string
+    {
+        return $this->pendaftaran->jurusan->nama_jurusan ?? '';
+    }
+    public function getAsalSekolahAttribute(): string
+    {
+        return $this->pendaftaran->siswa->asal_sekolah ?? '';
+    }
 
     public function getLabelStatusAttribute(): string
     {

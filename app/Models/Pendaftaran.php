@@ -89,6 +89,11 @@ class Pendaftaran extends Model
         return $this->siswa->nama_siswa ?? '';
     }
 
+    public function getNamaJurusanAttribute(): string
+    {
+        return $this->jurusan->nama_jurusan ?? '';
+    }
+
     // Helper: asal_sekolah, tahun_lulus, nomor_ijazah dari siswa
     public function getAsalSekolahAttribute(): ?string
     {

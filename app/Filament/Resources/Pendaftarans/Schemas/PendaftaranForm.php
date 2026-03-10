@@ -167,7 +167,7 @@ class PendaftaranForm
 
                         ]),//end-step2-schema
 
-                    Step::make('Data Calo Wali Murid')
+                    Step::make('Data Calon Wali Murid')
                         ->schema([
                             Section::make('Informasi Wali Murid')
                                 ->schema([

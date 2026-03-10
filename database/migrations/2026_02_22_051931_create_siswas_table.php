@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration {
     /**
@@ -13,11 +14,11 @@ return new class extends Migration {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pendaftaran_id')->unique()->constrained('pendaftarans')->cascadeOnDelete();
-            $table->string('nisn', 10);
+            $table->string('nisn', 10)->unique();
             $table->string('nama_siswa', 50);
             $table->enum('jk', ['laki_laki', 'perempuan']);
-            $table->string('phone', 15);
-            $table->string('email', 50);
+            $table->string('phone', 15)->unique();
+            $table->string('email', 50)->unique();
             $table->enum('agama', [
                 'islam',
                 'protestan',

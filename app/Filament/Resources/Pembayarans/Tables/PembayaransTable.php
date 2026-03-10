@@ -7,6 +7,8 @@ use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Support\Colors\Color;
 use Filament\Support\Icons\Heroicon;
@@ -42,6 +44,7 @@ class PembayaransTable
             'status_pembayaran' => 'sukses',
             'proof_path' => $data['proof_path'] ?? null,
             'tanggal_pembayaran' => now(),
+            'catatan' => $data['catatan'] ?? null,
             'verifikasi_oleh' => auth()->id(),
             'verifikasi_tanggal' => now(),
         ]);
@@ -67,23 +70,19 @@ class PembayaransTable
     {
         return $table
             ->columns([
-                TextColumn::make('metodePembayaran.nama_metode')
-                    ->label('Pembayaran')
-                    ->badge()
+                TextColumn::make('pendaftaran.kode_regis')
+                    ->label('Kode Registrasi')
                     ->searchable(),
                 TextColumn::make('pendaftaran.nama_siswa')
                     ->label('Calon Murid')
-                    ->searchable(),
-                TextColumn::make('pendaftaran.kode_regis')
-                    ->label('Kode Registrasi')
                     ->searchable(),
                 TextColumn::make('nominal')
                     ->numeric()
                     ->prefix('Rp.')
                     ->sortable(),
-                TextColumn::make('order_id')
-                    ->label('ID Order')
-                    ->toggleable(isToggledHiddenByDefault: true)
+                TextColumn::make('metodePembayaran.nama_metode')
+                    ->label('Pembayaran')
+                    ->badge()
                     ->searchable(),
                 BadgeColumn::make('status_pembayaran')
                     ->label('Status Pembayaran')
@@ -100,14 +99,6 @@ class PembayaransTable
                 TextColumn::make('verifikator.name')
                     ->label('Diverifikasi Oleh')
                     ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -130,6 +121,9 @@ class PembayaransTable
                         ->icon(Heroicon::CheckBadge)
                         ->requiresConfirmation()
                         ->form([
+                            Textarea::make('catatan')
+                                ->label('Catatan Pembayaran')
+                                ->placeholder('Tambah catatan..'),
                             FileUpload::make('proof_path')
                                 ->label('Upload foto kwintansi')
                                 ->image()
