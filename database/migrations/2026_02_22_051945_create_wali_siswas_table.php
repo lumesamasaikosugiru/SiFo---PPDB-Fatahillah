@@ -15,10 +15,12 @@ return new class extends Migration {
             $table->foreignId('pendaftaran_id')->unique()->constrained()->cascadeOnDelete();
             $table->string('nama_wali', 50);
             $table->enum('hubungan', [
-                'orang_tua',
+                'bapak',
+                'ibu',
                 'saudara_kandung',
                 'saudara_keluarga',
             ]);
+            $table->text('alamat');
             $table->string('pekerjaan', 30);
             $table->string('notelp_wali', 15);
             $table->string('email', 30);

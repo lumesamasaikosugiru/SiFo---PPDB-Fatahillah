@@ -175,7 +175,8 @@ class PendaftaranForm
                                         ->required(),
                                     Select::make('waliSiswa.hubungan')
                                         ->options([
-                                            'orang_tua' => 'Orangtua',
+                                            'bapak' => 'Bapak',
+                                            'ibu' => 'Ibu',
                                             'saudara_kandung' => 'Saudara Kandung',
                                             'saudara_keluarga' => 'Saudara Keluarga',
                                         ])

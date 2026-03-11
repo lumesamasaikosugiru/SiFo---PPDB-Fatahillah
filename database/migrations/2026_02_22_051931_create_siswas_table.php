@@ -27,6 +27,7 @@ return new class extends Migration {
                 'budha',
                 'khonghucu',
             ]);
+            $table->text('alamat');
             $table->string('tempat_lahir', 50);
             $table->date('tanggal_lahir');
             $table->string('asal_sekolah', 50);

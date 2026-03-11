@@ -13,6 +13,7 @@ class WaliSiswa extends Model
         'pendaftaran_id',
         'nama_wali',
         'hubungan',      // 'bapak' | 'ibu' | 'saudara_kandung' | 'saudara_keluarga'
+        'alamat',
         'pekerjaan',
         'notelp_wali',
         'email',
