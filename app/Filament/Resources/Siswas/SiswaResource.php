@@ -26,7 +26,7 @@ class SiswaResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'nama_siswa';
     protected static ?int $navigationSort = 5;
-    protected static ?string $navigationLabel = 'Murid';
+    protected static ?string $navigationLabel = 'Calon Murid';
     protected static string|UnitEnum|null $navigationGroup = 'Registrations';
 
     public static function form(Schema $schema): Schema
