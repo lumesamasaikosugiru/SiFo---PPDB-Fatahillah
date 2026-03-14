@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Pembayarans\Pages;
 
 use App\Filament\Resources\Pembayarans\PembayaranResource;
-use Filament\Actions\CreateAction;
+// use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListPembayarans extends ListRecords
@@ -13,7 +13,7 @@ class ListPembayarans extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            // CreateAction::make(),
         ];
     }
 }

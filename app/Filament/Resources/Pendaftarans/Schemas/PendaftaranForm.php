@@ -7,6 +7,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
@@ -64,6 +65,8 @@ class PendaftaranForm
                                         ->searchable()
                                         ->required(),
                                 ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedBuildingLibrary)
                                 ->columns(1),
 
                             Section::make('Status Sistem')
@@ -85,6 +88,8 @@ class PendaftaranForm
                                         ->default('publik')
                                         ->required(),
                                 ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedMegaphone)
                                 ->columns(1),
 
                             Section::make('Informasi Pendaftaran')
@@ -111,6 +116,8 @@ class PendaftaranForm
                                         ->required()
                                         ->default(now()),
                                 ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedClipboardDocumentList)
                                 ->columns(3)
                                 ->columnSpanFull(),
 
@@ -134,6 +141,29 @@ class PendaftaranForm
                                         ->placeholder('Pilih Jenis Kelamin')
                                         ->required(),
 
+                                ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedIdentification),
+
+                            Section::make('Asal Sekolah')
+                                ->schema([
+                                    TextInput::make('siswa.nisn')
+                                        ->required(),
+                                    TextInput::make('siswa.asal_sekolah')
+                                        ->required(),
+                                    TextInput::make('siswa.tahun_lulus')
+                                        ->required(),
+                                    TextInput::make('siswa.nomor_ijazah')
+                                        ->required(),
+
+                                ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedAcademicCap),
+                            Section::make('Informasi Tambahan')
+                                ->schema([
+                                    Textarea::make('siswa.alamat')
+                                        ->label('Alamat')
+                                        ->required(),
                                     Select::make('siswa.agama')
                                         ->options([
                                             'islam' => 'Islam',
@@ -150,20 +180,13 @@ class PendaftaranForm
                                         ->required(),
                                     DatePicker::make('siswa.tanggal_lahir')
                                         ->required(),
-                                ]),
+                                ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedInformationCircle)
+                                ->columnSpanFull(),
 
-                            Section::make('Asal Sekolah')
-                                ->schema([
-                                    TextInput::make('siswa.nisn')
-                                        ->required(),
-                                    TextInput::make('siswa.asal_sekolah')
-                                        ->required(),
-                                    TextInput::make('siswa.tahun_lulus')
-                                        ->required(),
-                                    TextInput::make('siswa.nomor_ijazah')
-                                        ->required(),
 
-                                ]),
+
 
                         ]),//end-step2-schema
 
@@ -182,6 +205,9 @@ class PendaftaranForm
                                         ])
                                         ->placeholder('Pilih Jenis Hubungan')
                                         ->required(),
+                                    Textarea::make('waliSiswa.alamat')
+                                        ->label('Alamat')
+                                        ->required(),
                                     TextInput::make('waliSiswa.pekerjaan')
                                         ->required(),
                                     TextInput::make('waliSiswa.notelp_wali')
@@ -189,6 +215,8 @@ class PendaftaranForm
                                     TextInput::make('waliSiswa.email')
                                         ->required(),
                                 ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedUser)
                                 ->columns(2)
                                 ->columnSpanFull()
                         ]),//end-step3-schema
@@ -199,24 +227,30 @@ class PendaftaranForm
                                 ->schema([
                                     FileUpload::make('dokumens.foto')
                                         ->label('Pas Foto')
+                                        ->disk('public')
                                         ->directory('dokumen')
                                         ->required(),
 
                                     FileUpload::make('dokumens.ijazah')
                                         ->label('Ijazah / SKL')
+                                        ->disk('public')
                                         ->directory('dokumen')
                                         ->required(),
 
                                     FileUpload::make('dokumens.kk')
                                         ->label('Kartu Keluarga')
+                                        ->disk('public')
                                         ->directory('dokumen')
                                         ->required(),
 
                                     FileUpload::make('dokumens.akta')
                                         ->label('Akta Kelahiran')
+                                        ->disk('public')
                                         ->directory('dokumen')
                                         ->required(),
                                 ])
+                                ->iconColor('success')
+                                ->icon(Heroicon::OutlinedDocumentArrowUp)
                                 ->columns(2)
                                 ->columnSpanFull()
                         ])

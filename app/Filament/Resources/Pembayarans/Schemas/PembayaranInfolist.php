@@ -27,11 +27,14 @@ class PembayaranInfolist
                         TextEntry::make('catatan')
                             ->label('Catatan'),
                         ImageEntry::make('proof_path')
-                            ->imageHeight(250)
+                            ->extraImgAttributes([
+                                'class' => 'max-w-full h-auto object-contain'
+                            ])
                             ->disk('public')
                             ->placeholder('belum dibayar')
                             ->hiddenLabel(),
                     ])
+                    ->iconColor('success')
                     ->icon(Heroicon::DocumentCheck)
                     ->columns(2)
                     ->columnSpan(2),
@@ -68,6 +71,7 @@ class PembayaranInfolist
                         TextEntry::make('asal_sekolah')
                             ->label('Asal Sekolah'),
                     ])
+                    ->iconColor('success')
                     ->icon(Heroicon::ExclamationCircle)
                     ->columns(4)
                     ->columnSpan(4),

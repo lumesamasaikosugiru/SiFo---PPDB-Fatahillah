@@ -6,6 +6,8 @@ use App\Filament\Resources\Siswas\Pages\CreateSiswa;
 use App\Filament\Resources\Siswas\Pages\EditSiswa;
 use App\Filament\Resources\Siswas\Pages\ListSiswas;
 use App\Filament\Resources\Siswas\Pages\ViewSiswa;
+use App\Filament\Resources\Siswas\RelationManagers\DokumensRelationManager;
+use App\Filament\Resources\Siswas\RelationManagers\WaliSiswasRelationManager;
 use App\Filament\Resources\Siswas\Schemas\SiswaForm;
 use App\Filament\Resources\Siswas\Schemas\SiswaInfolist;
 use App\Filament\Resources\Siswas\Tables\SiswasTable;
@@ -47,7 +49,8 @@ class SiswaResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            WaliSiswasRelationManager::class,
+            DokumensRelationManager::class
         ];
     }
 

@@ -6,6 +6,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class SiswaInfolist
 {
@@ -13,7 +14,6 @@ class SiswaInfolist
     {
         return $schema
             ->components([
-
                 Section::make('Detail Calon Siswa')
                     ->schema([
                         TextEntry::make('nisn')
@@ -42,36 +42,27 @@ class SiswaInfolist
                             ->numeric(),
                         TextEntry::make('nomor_ijazah')
                             ->label('Nomor Ijazah'),
-
-                    ])
-                    ->columns(5)
-                    ->columnSpan(5),
-
-                Fieldset::make('Lain-lain')
-                    ->schema([
-                        TextEntry::make('pendaftaran.id')
-                            ->label('ID Pendaftaran')
-                            ->placeholder('-'),
                         TextEntry::make('created_at')
                             ->dateTime()
                             ->placeholder('-'),
-                        TextEntry::make('updated_at')
-                            ->dateTime()
-                            ->placeholder('-'),
 
                     ])
-                    ->columns(1)
-                    ->columnSpan(1),
+                    ->iconColor('success')
+                    ->icon(Heroicon::OutlinedInformationCircle)
+                    ->columns(4)
+                    ->columnSpan(4),
 
-                Section::make('Info Pendaftaran')
+
+                Fieldset::make('Informasi Pendafatar')
                     ->schema([
                         TextEntry::make('pendaftaran.nama_sekolah')
                             ->label('Tujuan Sekolah'),
                         TextEntry::make('pendaftaran.nama_jurusan')
                             ->label('Jurusan yang dipilih')
                     ])
-                    ->columns(3)
-                    ->columnSpan(5),
+                    ->columns(1)
+                    ->columnSpan(2),
+
             ])
             ->columns(6);
     }

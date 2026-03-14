@@ -7,6 +7,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Hash;
 
 class UserForm
 {
@@ -16,6 +17,8 @@ class UserForm
             ->components([
                 FileUpload::make('file_path')
                     ->label('Pilih Foto')
+                    ->disk('public')
+                    ->directory('profil_picture')
                     ->default(null),
                 TextInput::make('name')
                     ->label('Nama')
@@ -27,6 +30,8 @@ class UserForm
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
+                    ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                    ->dehydrated(fn(string $state): bool => filled($state))
                     ->required(),
                 Select::make('roles')
                     ->label('Role')
