@@ -78,7 +78,7 @@ class PendaftaranForm
                                             'diterima' => 'Diterima',
                                             'ditolak' => 'Ditolak',
                                             'menunggu_pembayaran' => 'Menunggu pembayaran',
-                                            'pembayaran_lunas' => 'Pembayaran lunas',
+                                            // 'pembayaran_lunas' => 'Pembayaran lunas',
                                         ])
                                         ->default('diproses')
                                         ->required(),

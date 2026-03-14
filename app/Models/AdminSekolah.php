@@ -23,4 +23,9 @@ class AdminSekolah extends Model
     {
         return $this->belongsTo(Sekolah::class, 'sekolah_id');
     }
+
+    public function getNamaSekolahAttribute(): string
+    {
+        return $this->sekolah->nama_sekolah ?? '';
+    }
 }

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_active',
         'file_path',
     ];
 
@@ -58,4 +59,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pembayaran::class, 'verifikasi_oleh');
     }
+
+
 }

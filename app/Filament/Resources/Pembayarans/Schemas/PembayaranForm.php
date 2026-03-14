@@ -92,7 +92,6 @@ class PembayaranForm
 
                         Select::make('status_pembayaran')
                             ->options([
-                                'pending' => 'Pending',
                                 'menunggu_verifikasi' => 'Menunggu verifikasi',
                                 'sukses' => 'Sukses',
                                 'gagal' => 'Gagal',

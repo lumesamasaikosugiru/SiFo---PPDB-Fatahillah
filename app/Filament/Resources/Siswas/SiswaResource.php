@@ -31,6 +31,14 @@ class SiswaResource extends Resource
     protected static ?string $navigationLabel = 'Calon Murid';
     protected static string|UnitEnum|null $navigationGroup = 'Registrations';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::whereNotNull('nisn')->count();
+    }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return "Jumlah pendafatar yang diterima";
+    }
     public static function form(Schema $schema): Schema
     {
         return SiswaForm::configure($schema);

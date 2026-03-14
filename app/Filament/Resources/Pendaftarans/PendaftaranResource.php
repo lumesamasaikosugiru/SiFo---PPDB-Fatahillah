@@ -31,6 +31,17 @@ class PendaftaranResource extends Resource
     protected static ?string $navigationLabel = 'Pendaftaran';
     protected static string|UnitEnum|null $navigationGroup = 'Registrations';
 
+    public static function getNavigationBadge(): ?string
+    {
+        $count = static::getModel()::where('status', 'diproses')->count();
+        return $count > 0 ? (string) $count : null;
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return "Jumlah Pendaftar yang belum diproses!";
+    }
+
     public static function form(Schema $schema): Schema
     {
         return PendaftaranForm::configure($schema);

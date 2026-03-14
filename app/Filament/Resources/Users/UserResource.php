@@ -11,6 +11,7 @@ use App\Filament\Resources\Users\Schemas\UserInfolist;
 use App\Filament\Resources\Users\Tables\UsersTable;
 use App\Models\User;
 use BackedEnum;
+use Illuminate\Database\Console\Migrations\StatusCommand;
 use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -27,6 +28,14 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 8;
     protected static ?string $navigationLabel = 'Akun Pengguna';
     protected static string|UnitEnum|null $navigationGroup = 'User Setting';
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('is_active', true)->count();
+    }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return "Jumlah user aktif";
+    }
 
     public static function form(Schema $schema): Schema
     {

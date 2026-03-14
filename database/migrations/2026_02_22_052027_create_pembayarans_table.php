@@ -17,13 +17,14 @@ return new class extends Migration {
             $table->unsignedBigInteger('nominal');
             $table->string('order_id')->nullable()->unique();
             $table->string('snap_token')->nullable();
+
             $table->enum('status_pembayaran', [
-                'pending',
                 'menunggu_verifikasi',
                 'sukses',
                 'gagal',
                 'kadaluarsa',
             ])->default('pending');
+
             $table->date('tanggal_pembayaran')->nullable();
             $table->string('proof_path')->nullable();
             $table->foreignId('verifikasi_oleh')->nullable()->constrained('users');
