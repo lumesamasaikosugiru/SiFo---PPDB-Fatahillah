@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Filament\Resources\Siswas;
+
+use App\Filament\Resources\Siswas\Pages\CreateSiswa;
+use App\Filament\Resources\Siswas\Pages\EditSiswa;
+use App\Filament\Resources\Siswas\Pages\ListSiswas;
+use App\Filament\Resources\Siswas\Pages\ViewSiswa;
+use App\Filament\Resources\Siswas\RelationManagers\DokumensRelationManager;
+use App\Filament\Resources\Siswas\RelationManagers\WaliSiswasRelationManager;
+use App\Filament\Resources\Siswas\Schemas\SiswaForm;
+use App\Filament\Resources\Siswas\Schemas\SiswaInfolist;
+use App\Filament\Resources\Siswas\Tables\SiswasTable;
+use App\Models\Siswa;
+use BackedEnum;
+use Illuminate\Database\Eloquent\Builder;
+use UnitEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class SiswaResource extends Resource
+{
+    protected static ?string $model = Siswa::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+
+    protected static ?string $recordTitleAttribute = 'nama_siswa';
+    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationLabel = 'Calon Murid';
+    protected static ?string $modelLabel = 'Calon Murid';
+    protected static ?string $pluralModelLabel = 'Calon Murid';
+    protected static ?string $slug = 'calon-murid';
+    protected static string|UnitEnum|null $navigationGroup = 'Registrations';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::whereNotNull('nisn')->count();
+    }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return "Jumlah pendafatar yang diterima";
+    }
+    public static function form(Schema $schema): Schema
+    {
+        return SiswaForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return SiswaInfolist::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return SiswasTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            WaliSiswasRelationManager::class,
+            DokumensRelationManager::class
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListSiswas::route('/'),
+            'create' => CreateSiswa::route('/create'),
+            'view' => ViewSiswa::route('/{record}'),
+            'edit' => EditSiswa::route('/{record}/edit'),
+        ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('pendaftaran', function ($query) {
+                $query->sekolah();
+            });
+    }
+}
